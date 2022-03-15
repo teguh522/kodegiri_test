@@ -9,3 +9,7 @@
 
 - PORT=3000
 - SECRET_KEY=adflakjdsfadflkj
+
+### Api doc
+
+{baseurl}/api-docs
