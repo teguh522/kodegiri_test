@@ -30,7 +30,8 @@
                         "type":"string"
                     },
                     "image":{
-                        "type":"string"
+                        "type":"string",
+                        "format":"binary"
                     }
                 }
             },
@@ -94,7 +95,7 @@
                     "requestBody":{
                         "required":true,
                         "content":{
-                            "application/json":{
+                            "multipart/form-data":{
                                 "schema":{
                                     "$ref":"#/components/schemas/Event"
                                 }
