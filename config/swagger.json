@@ -1,0 +1,157 @@
+{
+   "openapi":"3.0.0",
+    "info":{
+        "title":"API Documentation",
+        "version":"1.0.0"
+    },
+    "components":{
+        "securitySchemes":{
+            "Bearer":{
+                "type":"http",
+                "scheme":"bearer",
+                "bearerFormat":"JWT"
+            }
+        }
+    },
+    "paths":{
+        "/event":{
+            "get":{
+                "tags":[
+                    "Event"
+                ],
+                "summary":"Get list event",
+                "security":[{ "Bearer": [] }],
+                "responses":{
+                    "200":{
+                        "description":"List Event"
+                    }
+                }
+            }
+        },
+        "/auth/signin":{
+            "post":{
+                "tags":[
+                    "Auth"
+                ],
+                "summary":"Login user",
+                "requestBody":{
+                    "required":true,
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "properties":{
+                                    "email":{
+                                        "type":"string",
+                                        "example":"tes@gmail.com"
+                                    },
+                                    "password":{
+                                        "type":"string",
+                                        "example":"123456"
+                                    }
+                                }
+                            }
+                        }
+                    }
+            
+        
+                },
+                "responses":{
+                    "201":{
+                        "description":"Token"
+                    }
+                }
+            }
+            },
+        "/auth":{
+            "get":{
+                "tags":[
+                    "Auth"
+                ],
+                "summary":"Get list user login",
+                "responses":{
+                    "200":{
+                        "description":"List User"
+                    }
+                }
+            },
+            "post":{
+                "tags":[
+                    "Auth"
+                ],
+                "summary":"Create user login",
+                "requestBody":{
+                    "required":true,
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "properties":{
+                                    "email":{
+                                        "type":"string",
+                                        "example":"tes@gmail.com"
+                                    },
+                                    "password":{
+                                        "type":"string",
+                                        "example":"123456"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "201":{
+                        "description":"User Created"
+                    }
+                }
+            }
+        },
+        "/auth/{id}":{
+            "get":{
+                "tags":[
+                    "Auth"
+                ],
+                "summary":"Get user login by id",
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of user",
+                        "required":true,
+                        "schema":{
+                            "type":"string"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"User Found"
+                    }
+                }
+            },
+            "delete":{
+                "tags":[
+                    "Auth"
+                ],
+                "summary":"Delete user login",
+                "parameters":[
+                    {
+                        "name":"id",
+                        "in":"path",
+                        "description":"ID of user",
+                        "required":true,
+                        "schema":{
+                            "type":"string"
+                        }
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"User Deleted"
+                    }
+                }
+            }
+        }
+    }
+}

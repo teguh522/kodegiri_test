@@ -2,10 +2,8 @@
 const {
   Model
 } = require('sequelize');
-const bcrypt = require('bcrypt');
-
 module.exports = (sequelize, DataTypes) => {
-  class Auth extends Model {
+  class Event extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -15,16 +13,15 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Auth.init({
-    email: DataTypes.STRING,
-    password: DataTypes.TEXT
+  Event.init({
+    eventname: DataTypes.STRING,
+    date: DataTypes.DATEONLY,
+    time: DataTypes.STRING(10),
+    location: DataTypes.STRING,
+    image: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'Auth',
+    modelName: 'Event',
   });
-  Auth.addHook('beforeCreate', async (user) => {
-    const hash = await bcrypt.hashSync(user.password, 10);
-    user.password = hash;
-  })
-  return Auth;
+  return Event;
 };
